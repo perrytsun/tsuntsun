@@ -1,0 +1,52 @@
+<h1>Happy angel</h1>
+<h3>Consultation詳細</h3>
+
+<div class="consultation">
+  <p><%= @consultation.user.email %></p>
+  <p><%= @consultation.body %></p>
+  <p><%= @consultation.created_at %></p>
+</div>
+
+<% if user_signed_in? %>
+  <% if current_user.already_liked?(@consultation) %>
+    <%= link_to consultation_like_path(@consultation, @consultation.likes), method: :delete do %>
+       <i class="fas fa-heart"></i><%= @consultation.likes.count %>
+  <% end %>
+   <% else %>
+    <%= link_to consultation_likes_path(@consultation), method: :post do %>
+       <i class="far fa-heart"></i><%= @consultation.likes.count %>
+   <% end %>
+<% end %>
+<% else %>
+<i class="far fa-heart"></i><%= @consultation.likes.count %>
+<% end %>
+
+
+<h2>いいねしたユーザー</h2>
+<% @consultation.liked_users.each do |user| %>
+  <li><%= user.email %></li>
+<% end %>
+
+<div class="comment-wrapper">
+  <p>コメント一覧</p>
+  <% @comments.each do |c| %>
+    <div>
+      <%= c.user.email unless c.user.blank? %>
+      <br>
+      <%= c.content %>
+    </div>
+      <br>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= form_with(model: [@consultation, @comment], local: true) do |f| %>
+      <%= f.text_area :content %>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-comments"></i> コメントする
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "編集する", edit_consultation_path(@consultation.id) %>
+<%= link_to "Consultation一覧に戻る", consultations_path %>

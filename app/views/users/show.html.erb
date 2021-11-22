@@ -1,0 +1,25 @@
+<h1>マイページ</h1>
+<div class="bottom-item">
+<i class="far fa-user-circle"></i>
+</div>
+<p><%= @user.name %></p>
+<p>プロフィール : <%= @user.profile %></p>
+
+<% if current_user.id == @user.id %>
+  <%= link_to "編集する", edit_user_registration_path %>
+<% end %>
+
+<h2>ユーザーの投稿一覧</h2>
+<% @user.consultations.each do |t| %>
+  <%= t.user.name %>
+  <%= t.body %>
+<% end %>
+
+<h2>ユーザーがいいねした投稿一覧</h2>
+<% @user.liked_consultations.each do |t| %>
+  <%= t.user.name %>
+  <%= t.body %>
+<% end %>
+<!-- ここまで-->
+
+<%= link_to "Consultation一覧に戻る", consultations_path %>

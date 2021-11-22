@@ -1,0 +1,18 @@
+<h1>Happy angel</h1>
+<h3>お悩み投稿ページ</h3>
+<%= form_for @consultation do |f| %>
+  <div class="field">
+  <%= f.label :内容 %>
+    <%= f.text_field :body, :size => 140 %>
+  </div>
+
+  <div class="field">
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+</div>
+
+  <%= f.submit "お悩みを投稿する" %>
+<% end %>
+<%= link_to "TOPページに戻る", consultations_path %>
+
+

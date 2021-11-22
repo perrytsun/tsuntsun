@@ -1,0 +1,53 @@
+<h1>Happy angel</h1>
+<h3>投稿を検索</h3>
+ <%= form_tag({controller:"consultations",action:"index"}, method: :get) do %>
+   <%= text_field_tag :search %>
+   <div class="bottom-item">
+       <i class="fas fa-search"></i></a>
+</div>
+<% end %>
+<% if user_signed_in? %> 
+  <%= link_to "マイページへ", user_path(current_user.id)%>
+<% end %>
+<%= link_to "相談する", new_consultation_path %>
+<%= link_to "みんなのお悩み", new_consultation_path %>
+
+<div class="consultations-container">
+  <% @consultations.each do |t| %>
+    <div class="counsultation">
+    <%= image_tag t.image_url, size: "250x200" if t.image? %>
+      <%= t.body %>
+      <% if user_signed_in? %>
+        <% if current_user.already_liked?(t) %>
+          <%= link_to consultation_like_path(id: t.id, consultation_id: t.id), method: :delete do %>
+            <i class="fas fa-heart"></i><%= t.likes.count %>
+        <% end %>
+        <% else %>
+          <%= link_to consultation_likes_path(id: t.id, consultation_id: t.id), method: :post do %>
+            <i class="far fa-heart"></i><%= t.likes.count %>
+          <% end %>
+        <% end %>
+         <% else %>
+           <i class="far fa-heart"></i><%= t.likes.count %>
+         <% end %>
+         <% @rank_consultations.each do |t| %>
+       <%end%>
+    <% if user_signed_in? %>
+        <%= link_to "マイページへ", user_path(current_user.id) %>　
+    <% end %>
+      <%= t.created_at %>
+      <%= t.user.email %>
+      <%= link_to "詳細へ", consultation_path(t.id) %>
+      <% if user_signed_in? && current_user.id == t.user_id %>  
+        <%= link_to "編集する", edit_consultation_path(t.id) %>
+        <%= button_to "削除する", consultation_path(t.id), method: :delete %>
+      <%end%>
+        <div class="bottom-item">
+        <%= link_to consultation_path(t.id) do %>
+          <i class="fa fa-comment regular"></i>
+        <% end %>
+      </div>    
+    </div>
+  <% end %>
+</div>
+

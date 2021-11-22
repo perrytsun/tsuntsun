@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  consultation_contents: MyText
+  category: MyText
+  hope_answer: 1
+
+two:
+  consultation_contents: MyText
+  category: MyText
+  hope_answer: 1
