@@ -37,12 +37,12 @@
     align-items: center;
   }
   header a {
-    color: rgb(#e49fd3); 
+    color: #e49fd3; 
     text-decoration: none; 
   }
   header h1 {
     margin-left: 20px;
-    color: rgb(#e49fd3);
+    color: #e49fd3;
   }
   .header-list {
     display: flex;
