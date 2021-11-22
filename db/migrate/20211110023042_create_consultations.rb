@@ -5,7 +5,7 @@ class CreateConsultations < ActiveRecord::Migration[6.1]
       t.text :hashbody
       t.text :category
       t.integer :hope_answer
-
+      t.string :image
       t.timestamps
 
     end
