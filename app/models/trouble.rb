@@ -1,2 +1,0 @@
-class Trouble < ApplicationRecord
-end
