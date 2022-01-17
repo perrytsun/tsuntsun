@@ -20,7 +20,7 @@ class ConsultationsController < ApplicationController
      end
 
      def create
-        consultation = Consultation.new(body_params)
+        consultation = Consultation.new(consultation_params)
         consultation.user_id = current_user.id
         if consultation.save
           redirect_to :action => "index"
@@ -40,9 +40,9 @@ class ConsultationsController < ApplicationController
       end
 
       def update
-        tweet = Consultation.find(params[:id])
-        if tweet.update(body_params)
-          redirect_to :action => "show", :id => tweet.id
+        consultation = Consultation.find(params[:id])
+        if consultation.update(consultation_params)
+          redirect_to :action => "show", :id => consultation.id
         else
           redirect_to :action => "new"
         end
@@ -57,7 +57,7 @@ class ConsultationsController < ApplicationController
       private
 
       def consultation_params
-         params.require(:consuly).permit(:body, :image) 
+         params.require(:consultation).permit(:body, :image) 
       end
       
 end

@@ -1,0 +1,3 @@
+class onsultationTagging < ApplicationRecord
+   
+  end

@@ -15,9 +15,10 @@ Rails.application.routes.draw do
   patch 'tweets/:id' => 'tweets#update'
   delete 'tweets/:id' => 'tweets#destroy'
   get 'tweets/:id/edit' => 'tweets#edit', as:'edit_tweet'
-  
-  get 'mypage/new' => 'users#show'
+  get 'consultations/new' => 'consultations#new'
 
+  get 'mypage/new' => 'users#show'
+  post 'consultations' => 'cosultations#create'
 
 
 end

@@ -14,6 +14,10 @@
  *= require_self
  */
 
+ @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=EB+Garamond:ital@1&family=Klee+One:wght@400;600&family=PT+Serif:ital,wght@0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,500;1,400;1,500&family=Yomogi&family=Zen+Kurenaido&display=swap');
+
+
+
  * {
     padding: 0;
     margin: 0;
@@ -28,6 +32,7 @@
     min-height: 80vh;
     text-align: center;
   }
+  
   header {
     background-color: #e49fd3;
     height: 100px;

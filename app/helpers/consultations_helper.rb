@@ -1,2 +1,3 @@
 module ConsultationsHelper
-end
+    
+  end

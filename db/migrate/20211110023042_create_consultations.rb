@@ -7,7 +7,7 @@ class CreateConsultations < ActiveRecord::Migration[6.1]
       t.integer :hope_answer
       t.string :image
       t.timestamps
-
+      add_column :tweets, :image, :string
     end
   end
 end
